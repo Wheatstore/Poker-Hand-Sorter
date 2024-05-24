@@ -1,6 +1,7 @@
 from collections import Counter
 
-hand = ["3S", "JC", "JD", "3D", "AH"]
+hand1 = ["3S", "JC", "JD", "3D", "AH"]
+hand = ["TH", "JH", "QH", "KH", "AH"]
 straight_hand = ["9H", "8D", "7C", "6S", "5H"]
 value_dict = {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
@@ -85,9 +86,24 @@ def check_flush(hand):
     suits = list((i[1])for i in hand)
     #if the number of suits of the first element is not equal to the total lenght of the array the array is not all the same
     if suits.count(suits[0]) == len(suits):
-        return True
+        return True, "is a flush"
     else:
-        return False    
+        return False, "Not a flush"  
+
+def check_straightFlush(hand):
+    if check_flush(hand) and checkIf_Straight(hand) == True:
+        return True, "Is a straight Flush"
+    else:
+        return False, "Not a straight Flush"
+
+def check_royale_flush(hand):
+    is_flush = check_flush(hand)
+    royal_flush = [14, 13, 12, 11, 10]
+    compare_list = [i[0] for i in hand]
+    if royal_flush == compare_list:
+        return True, "Royale Flush!"
+    else:
+        return False, "Not a royale flush"
     
 
         
@@ -96,4 +112,6 @@ converted_order = initialize_hand(hand)
 print(check_pariring(converted_order))
 print(checkIf_Straight(converted_order))
 print(check_flush(converted_order))
+print(check_straightFlush(converted_order))
+print(check_royale_flush(converted_order))
 
