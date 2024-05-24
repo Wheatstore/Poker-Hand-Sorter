@@ -1,6 +1,7 @@
 from collections import Counter
 
 hand = ["3S", "JC", "JD", "3D", "AH"]
+straight_hand = ["9H", "8D", "7C", "6S", "5H"]
 value_dict = {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
@@ -21,7 +22,7 @@ def initialize_hand(hand):
     print("Sorted Cards:", sorted_cards)
     return sorted_cards
     
-def check_pair_or_two(hand):
+def check_pair_or_two_or_three(hand):
     number_counts_dict = {}
     num_of_pairs = 0
     for value, suit in hand:
@@ -33,7 +34,6 @@ def check_pair_or_two(hand):
     for i in number_counts_dict:
         if number_counts_dict[i] == 2:
             num_of_pairs += 1
-            print(num_of_pairs)
     
     if num_of_pairs == 1:
         return True, 'One pair'
@@ -41,11 +41,27 @@ def check_pair_or_two(hand):
     if num_of_pairs == 2:
         return True, "Two Pair"
     
+    if num_of_pairs == 3:
+        return True, "Three Pair"
+    
     else:
         return False
 
-
+def checkIf_Straight(hand):
+    values = []
+    for i in hand:
+        values.append(i[0])
+    
+    print(values)
+    
+    for i in range(4):
+        
+        if (int(values[i]) - 1) != int(values[i + 1]):
+            return False, "Not a straight"
+        else: 
+            return True, "A straight"
     
 converted_order = initialize_hand(hand)
-print(check_pair_or_two(converted_order))
+print(check_pair_or_two_or_three(converted_order))
+print(checkIf_Straight(converted_order))
 
