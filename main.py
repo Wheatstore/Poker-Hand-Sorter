@@ -1,6 +1,6 @@
 from collections import Counter
 
-hand = ["3S", "JC", "JD", "5D", "AH"]
+hand = ["3S", "JC", "JD", "3D", "AH"]
 value_dict = {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
 
@@ -21,7 +21,7 @@ def initialize_hand(hand):
     print("Sorted Cards:", sorted_cards)
     return sorted_cards
     
-def check_pair(hand):
+def check_pair_or_two(hand):
     number_counts_dict = {}
     num_of_pairs = 0
     for value, suit in hand:
@@ -36,16 +36,16 @@ def check_pair(hand):
             print(num_of_pairs)
     
     if num_of_pairs == 1:
-        return True
-        
+        return True, 'One pair'
+    
+    if num_of_pairs == 2:
+        return True, "Two Pair"
+    
     else:
         return False
-    
-def check_twoPair():
-    pass
 
 
     
 converted_order = initialize_hand(hand)
-print(check_pair(converted_order))
+print(check_pair_or_two(converted_order))
 
