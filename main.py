@@ -60,8 +60,19 @@ def checkIf_Straight(hand):
             return False, "Not a straight"
         else: 
             return True, "A straight"
+
+def check_flush(hand):
+    suits = list((i[1])for i in hand)
+    if suits.count(suits[0]) == len(suits):
+        return True
+    else:
+        return False    
     
+    
+        
+
 converted_order = initialize_hand(hand)
 print(check_pair_or_two_or_three(converted_order))
 print(checkIf_Straight(converted_order))
+print(check_flush(converted_order))
 
