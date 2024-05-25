@@ -1,7 +1,7 @@
 from collections import Counter
 
 hand1 = ["3S", "JC", "JD", "3D", "AH"]
-hand = ["TH", "JH", "QH", "KH", "AH"]
+hand = ["AS", "AD", "2H", "5H", "6C"]
 straight_hand = ["9H", "8D", "7C", "6S", "5H"]
 value_dict = {'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
 
@@ -103,8 +103,7 @@ def check_royale_flush(hand):
     if royal_flush == compare_list:
         return True, "Royale Flush!"
     else:
-        return False, "Not a royale flush"
-    
+        return False, "Not a royale flush"  
 
         
 #place to run the functions in an organized way
